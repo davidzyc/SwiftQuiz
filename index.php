@@ -9,7 +9,7 @@ $_GET['c'] = 'User';
 
 define('DIR_SECURE_FILENAME','index.html');
 
-define('APP_PATH','./Quizhub/');
+define('APP_PATH','./SwiftQuiz/');
 
 require './ThinkPHP/ThinkPHP.php';
 
