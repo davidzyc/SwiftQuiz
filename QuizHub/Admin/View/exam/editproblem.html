@@ -1,0 +1,101 @@
+
+<script src="__PUBLIC__/ckeditor/ckeditor.js"></script>
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p class="lead">编辑题目</p>
+        </div>
+
+        <form method="post" action="__URL__/updateproblem/pid/{$problem.pid}">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">题目</span>
+                            </div>
+                            <div class="col-md-11">
+                                <textarea name="pcontent" id="pcontent" rows="10" cols="10" >{$problem.pcontent}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">答案</span>
+                            </div>
+                            <div class="col-md-11 btn-group" data-toggle="buttons">
+                                <if condition="$problem.ansunique eq 0">
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="ansunique" id="user" value="1" autocomplete="off" checked>自动
+                                    </label>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="ansunique" id="admin" value="0" autocomplete="off">人工
+                                    </label>
+                                    <elseif condition="$problem.ansunique eq 1"/>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="ansunique" id="user" value="1" autocomplete="off">自动
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="ansunique" id="admin" value="0" autocomplete="off" checked>人工
+                                    </label>
+                                </if>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">答案</span>
+                            </div>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" name="rightans" value="{$problem.rightans}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">分值</span>
+                            </div>
+                            <div class="col-md-11">
+                                <input type="number" class="form-control" name="score" value="{$problem.score}">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-1">
+                                <button type="submit" class="btn btn-primary btn-lg">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+
+
+
+
+</div>
+
+
+<script>
+    CKEDITOR.replace( 'pcontent', {
+        filebrowserImageUploadUrl: '/Admin/exam/uploadimg',
+        mathJaxLib: '//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+        height: 320
+    } );
+</script>

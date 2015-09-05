@@ -1,0 +1,89 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>登录 - SwiftQuiz</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SwiftQuiz">
+    <link rel="apple-touch-icon" href="__PUBLIC__/images/logo_favicon.png">
+
+    <link rel="shortcut icon" href="__PUBLIC__/images/logo_ios_desktop.png" />
+
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/css/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#res-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">SwiftQuiz</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="res-nav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">登陆 <span class="sr-only">(current)</span></a></li>
+                <li class=""><a href="__URL__/register">注册 <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="panel panel-default panel-title">
+                <div class="panel-heading">用户登录</div>
+                <div class="panel-body">
+                    <form method="post" action="__URL__/login">
+                        <div class="form-group form-group-lg">
+                            <label for="username">用户名</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名">
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <label for="password">密码</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">记住我
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="container">
+        <hr>
+
+        <div class="copyright">
+            <span>Powered by <a href="#">SwiftQuiz</a>&nbsp;|&nbsp;</span><a href="/Home/index/about">关于</a><br>
+            <span>(C) DavidZYC2000</span>
+        </div>
+
+        <div class="links">
+            <a href="">链接1</a> |
+            <a href="">链接2</a>
+        </div>
+
+    </footer>
+
+<script src="__PUBLIC__/js/jquery-2.1.4.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+</body>
+</html>

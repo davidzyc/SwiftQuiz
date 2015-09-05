@@ -1,0 +1,96 @@
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    用户数据更新
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="post" action="__URL__/accountupdate">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="username" id="username" value="{$user.username}" placeholder="用户名" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="email" id="email" value="{$user.email}" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10 btn-group" data-toggle="buttons">
+
+                                <if condition="$user.sex eq 0">
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="sex" id="male" value="0" autocomplete="off" checked>男
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="sex" id="female" value="1" autocomplete="off">女
+                                    </label>
+                                    <elseif condition="$user.sex eq 1"/>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="sex" id="male" value="0" autocomplete="off">男
+                                    </label>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="sex" id="female" value="1" autocomplete="off" checked>女
+                                    </label>
+                                </if>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-label">年龄</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="age" id="age" value="{$user.age}" placeholder="年龄">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary btn-lg">更新用户数据</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    更改密码
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="post" action="__URL__/changepassword">
+                        <div class="form-group">
+                            <label for="passwordold" class="col-sm-2 control-label">原密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="passwordold" id="passwordold" placeholder="原密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="新密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordagain" class="col-sm-2 control-label">重复密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="passwordagain" id="passwordagain" placeholder="重复新密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary btn-lg">更改密码</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

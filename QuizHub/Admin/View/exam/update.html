@@ -1,0 +1,170 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    试卷信息更新
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="post" action="__URL__/updatedata">
+                        <input type="hidden" name="eid" value="{$exam.eid}">
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">试卷名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="title" id="title" placeholder="试卷名称" value="{$exam.title}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="summary" class="col-sm-2 control-label">简介</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="3" name="summary" id="summary">{$exam.summary}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="timelimit" class="col-sm-2 control-label">时间限制<br>（秒）</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="timelimit" id="timelimit" placeholder="时间限制" value="{$exam.timelimit}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">状态</label>
+                            <div class="col-sm-10 btn-group" data-toggle="buttons">
+                                <if condition="$exam.status eq 0">
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="status" value="1" autocomplete="off" checked>启用
+                                    </label>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="status" value="0" autocomplete="off">禁用
+                                    </label>
+                                    <elseif condition="$exam.status eq 1"/>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="status" value="1" autocomplete="off">启用
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="status" value="0" autocomplete="off" checked>禁用
+                                    </label>
+                                </if>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="push" class="col-sm-2 control-label">向这些用户推送<br>(输入用户ID)</label>
+                            <div class="col-sm-10">
+                                <textarea name="push" id="push" rows="3" style="width: 100%;" placeholder="多个用户ID请用逗号隔开"><volist name="uelink" id="uelink">{$uelink.uid},</volist></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">标签</label>
+                            <div class="col-sm-10">
+                                <h5 class="form-control-static" id="tagbox">
+                                    <volist name="tag" id="tag" empty="$empty" >
+                                        <span class="label label-default tag" id="{$tag.id}">{$tag.tagcontent}</span>
+                                    </volist>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label sr-only">标签</label>
+                            <div class="col-sm-10">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label for="addtag" class="sr-only">添加标签</label>
+                                        <input type="email" class="form-control" id="addtag" placeholder="">
+                                    </div>
+                                    <a id="addtagbtn" class="btn btn-default">添加标签</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-2">
+                                <button type="submit" class="btn btn-primary btn-lg">更新试卷信息</button>
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmdelete">删除此试卷</a>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmclear">清除所有答题数据</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="confirmdelete" tabindex="-1" role="dialog" aria-labelledby="confirmdeletelabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="confirmdeletelabel">确认删除</h4>
+            </div>
+            <div class="modal-body">
+                试卷一旦删除无法恢复，您确定要继续吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                <a href="__URL__/delete/eid/{$exam.eid}" class="btn btn-danger">删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmclear" tabindex="-1" role="dialog" aria-labelledby="confirmdeletelabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="confirmdeletelabel">确认清除</h4>
+            </div>
+            <div class="modal-body">
+                即将清除所有答题信息，您确定要继续吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                <a href="__URL__/cleardata/eid/{$exam.eid}" class="btn btn-danger">清除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#addtagbtn").on("click", function () {
+            $.post("__URL__/addtag/eid/{$exam.eid}",{tagcontent:$("#addtag").val()}, function (data) {
+                if(data){
+                    $("#tagbox").append("<span class='label label-default'>"+$("#addtag").val()+"</span>");
+                    $("#addtag").val("");
+                }else{
+                    alert("添加失败！");
+                }
+            });
+        });
+        $(".tag").on("click", function () {
+            var tid = $(this).attr("id");
+            $.get("__URL__/deltag/",{id:tid}, function (data) {
+                if(data){
+                    $("#"+tid).remove();
+                }else{
+                    alert("删除失败！");
+                }
+            });
+        });
+    });
+
+</script>

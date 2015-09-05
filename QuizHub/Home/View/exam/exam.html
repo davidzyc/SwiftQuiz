@@ -1,0 +1,94 @@
+<script type="text/javascript"
+        src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<form method="post" action="/Home/exam/postans" id="problems">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5>{$exam.title}</h5>
+                    <span>
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;{$exam.uname}&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-calendar"></span>&nbsp;{$exam.date}&nbsp;&nbsp;
+                    </span>
+                </div>
+            </div>
+
+
+                <volist name="problemlist" id="problemlist" empty="$empty" >
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            题目编号:{$problemlist.pid}&nbsp;&nbsp;&nbsp;&nbsp;题目分值:{$problemlist.score}
+                        </div>
+                        <div class="panel-body">
+                            {$problemlist.pcontent}
+                        </div>
+                        <div class="panel-footer">
+
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <span class="">输入答案</span>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <input type="text" class="form-control problem" name="rightans[{$problemlist.pid}]" id="{$problemlist.pid}">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </volist>
+
+
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submit-confirm">提交试卷</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="submit-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">您确认要提交吗？</h4>
+                </div>
+                <div class="modal-body">
+                    当前您已完成12道试题，还有12道试题未完成。<br>
+                    一旦您提交，便无法回到此界面继续答题。
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回继续答题</button>
+                    <a href="__URL__/postexam" class="btn btn-primary">确认提交</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<script>
+
+$(document).ready(function () {
+    $(".problem").on("focusout", function () {
+        var pid = $(this).attr("id");
+        var anscontent = $(this).val();
+        var info;
+        $.post("__URL__/addans",{anscontent:anscontent,pid:pid,eid:"{$Think.get.eid}"}, function (data) {
+            info = data;
+        });
+
+    });
+});
+
+</script>

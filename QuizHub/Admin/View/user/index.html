@@ -1,0 +1,79 @@
+<style>
+    #uid {
+        width: 15%;
+    }
+    #name {
+        width: 55%;
+    }
+    #age {
+        width: 15%;
+    }
+    #sex {
+        width: 15%;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-inline" method="get" action="__URL__/index">
+                        <div class="form-group col-md-3 col-lg-3">
+                            <label class="sr-only" for="searchUser"></label>
+                            <div class="input-group" style="width: 100%;">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </div>
+                                <input type="text" class="form-control" id="searchUser" name="uname" placeholder="搜索用户名" value="{$Think.get.uname}">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 col-lg-2">
+                            <label class="sr-only" for="searchUser"></label>
+                            <div class="input-group" style="width: 100%;">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </div>
+                                <input type="text" class="form-control" id="searchUser" name="uid" placeholder="搜索用户ID" value="{$Think.get.uid}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                        <a href="__URL__/create" class="btn btn-success col-md-offset-5"><span class="glyphicon glyphicon-plus"></span> 添加用户</a>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <table class="table table-hover table-responsive">
+                        <tr>
+                            <th id="uid">用户ID</th>
+                            <th id="name">用户名</th>
+                            <th id="age">年龄</th>
+                            <th id="sex">性别</th>
+                        </tr>
+
+                        <volist name="list" id="data" empty="$empty" >
+                            <tr>
+                                <td>{$data.uid}</td>
+                                <td><a href="__URL__/update/uid/{$data.uid}">{$data.username}</a></td>
+                                <td>{$data.age}</td>
+                                <td>{$data.sex}</td>
+                            </tr>
+                        </volist>
+                    </table>
+
+                </div>
+                <div class="panel-footer">
+                    <nav>
+                        <ul class="pagination">
+                            {$page}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

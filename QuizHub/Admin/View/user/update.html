@@ -1,0 +1,232 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    用户数据更新
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="post" action="__URL__/updatedata">
+
+                        <input type="hidden" name="uid" value="{$user.uid}">
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="username" id="username" value="{$user.username}" placeholder="用户名" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="email" id="email" value="{$user.email}" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" value="{$user.password}" id="password" placeholder="新密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordAgain" class="col-sm-2 control-label">重复密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="passwordAgain" value="{$user.password}" placeholder="重复新密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10 btn-group" data-toggle="buttons">
+
+                                <if condition="$user.sex eq 0">
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="sex" id="male" value="0" autocomplete="off" checked>男
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="sex" id="female" value="1" autocomplete="off">女
+                                    </label>
+                                <elseif condition="$user.sex eq 1"/>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="sex" id="male" value="0" autocomplete="off">男
+                                    </label>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="sex" id="female" value="1" autocomplete="off" checked>女
+                                    </label>
+                                </if>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-label">年龄</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="age" id="age" value="{$user.age}" placeholder="年龄">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">用户组</label>
+                            <div class="col-sm-10 btn-group" data-toggle="buttons">
+                                <if condition="$user.type eq 0">
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="type" id="user" value="0" autocomplete="off" checked>学生
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="type" id="admin" value="1" autocomplete="off">管理员
+                                    </label>
+                                    <elseif condition="$user.type eq 1"/>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="type" id="user" value="0" autocomplete="off">学生
+                                    </label>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="type" id="admin" value="1" autocomplete="off" checked>管理员
+                                    </label>
+                                </if>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">状态</label>
+                            <div class="col-sm-10 btn-group" data-toggle="buttons">
+                                <if condition="$user.status eq 0">
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="status" id="user" value="1" autocomplete="off" checked>启用
+                                    </label>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="status" id="admin" value="0" autocomplete="off">禁用
+                                    </label>
+                                    <elseif condition="$user.status eq 1"/>
+                                    <label class="btn btn-default active">
+                                        <input type="radio" name="status" id="user" value="1" autocomplete="off">启用
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="status" id="admin" value="0" autocomplete="off" checked>禁用
+                                    </label>
+                                </if>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">标签</label>
+                            <div class="col-sm-10">
+                                <h5 class="form-control-static" id="tagbox">
+                                    <volist name="tag" id="tag" empty="$empty" >
+                                        <span class="label label-default tag" id="{$tag.id}">{$tag.tagcontent}</span>
+                                    </volist>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label sr-only">标签</label>
+                            <div class="col-sm-10">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label for="addtag" class="sr-only">添加标签</label>
+                                        <input type="email" class="form-control" id="addtag" placeholder="">
+                                    </div>
+                                    <a id="addtagbtn" class="btn btn-default">添加标签</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmdelete">删除此用户</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary btn-lg">更新用户数据</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ta参加过的考试
+                </div>
+                <div class="panel-body">
+
+                    <table class="table table-hover table-responsive">
+                        <tr>
+                            <th>考试名称</th>
+                            <th>出卷人</th>
+                            <th>时间</th>
+                            <th>看Ta的答题情况</th>
+                            <th>编辑信息</th>
+                            <th>编辑试题</th>
+                        </tr>
+
+                        <volist name="examlist" id="examlist" empty="$empty" >
+                            <tr>
+                                <td><b><a href="/Admin/exam/update/eid/{$examlist.eid}">{$examlist.title}</a></b></td>
+                                <td>{$examlist.uname}</td>
+                                <td>{$examlist.date}</td>
+                                <td><a href="/Admin/exam/seeanswer/eid/{$examlist.eid}/uid/{$user.uid}" class="btn btn-default"><span class="glyphicon glyphicon-stats"></span> </a></td>
+                                <td><a href="/Admin/exam/update/eid/{$examlist.eid}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> </a></td>
+                                <td><a href="/Admin/exam/addproblem/eid/{$examlist.eid}" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> </a></td>
+                            </tr>
+                        </volist>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="confirmdelete" tabindex="-1" role="dialog" aria-labelledby="confirmdeletelabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="confirmdeletelabel">确认删除</h4>
+            </div>
+            <div class="modal-body">
+                用户一旦删除无法恢复，且所有的答题记录、成绩等关联数据也会一并删除，您确定要继续吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                <a href="__URL__/delete/uid/{$user.uid}" class="btn btn-danger">删除</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#addtagbtn").on("click", function () {
+            $.post("__URL__/addtag/uid/{$user.uid}",{tagcontent:$("#addtag").val()}, function (data) {
+                if(data){
+                    $("#tagbox").append("<span class='label label-default'>"+$("#addtag").val()+"</span>");
+                    $("#addtag").val("");
+                }else{
+                    alert("添加失败！");
+                }
+            });
+        });
+    });
+
+    $(".tag").on("click", function () {
+        var tid = $(this).attr("id");
+        $.get("__URL__/deltag/",{id:tid}, function (data) {
+            if(data){
+                $("#"+tid).remove();
+            }else{
+                alert("添加失败！");
+            }
+        });
+    });
+
+</script>

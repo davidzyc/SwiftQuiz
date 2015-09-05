@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            <div class="panel panel-default">
+                <div class="panel-heading panel-title">试卷列表</div>
+                <div class="panel-body">
+
+                    <p>
+                        <div class="row">
+                            <div class="col-md-6 visible-md visible-lg">试卷名称</div>
+                            <div class="col-md-3 visible-md visible-lg">出卷人</div>
+                            <div class="col-md-3 visible-md visible-lg">时间</div>
+                        </div>
+                    </p>
+
+                    <volist name="examlist" id="listdata" empty="$empty" >
+                        <p>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <a href="/Home/exam/index/eid/{$listdata.eid}"><b class="lead">{$listdata.title}</b></a>
+                                </div>
+                                <div class="col-md-3 col-xs-6">
+                                    <span class="glyphicon glyphicon-user"></span>{$listdata.uname}
+                                </div>
+                                <div class="col-md-3 col-xs-6">
+                                    <span class="glyphicon glyphicon-calendar"></span>{$listdata.date}
+                                </div>
+                            </div>
+                        </p>
+                    </volist>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

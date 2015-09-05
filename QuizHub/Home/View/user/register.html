@@ -1,0 +1,145 @@
+
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>注册 - SwiftQuiz</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SwiftQuiz">
+    <link rel="apple-touch-icon" href="__PUBLIC__/images/logo_favicon.png">
+
+    <link rel="shortcut icon" href="__PUBLIC__/images/logo_ios_desktop.png" />
+
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/css/global.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#res-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">SwiftQuiz</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="res-nav">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="__URL__/index">登陆 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">注册 <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    欢迎注册
+                </div>
+                <div class="panel-body">
+
+                    <form class="form-horizontal" method="post" action="__URL__/reguser">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="新密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordagain" class="col-sm-2 control-label">重复密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="passwordagain" placeholder="重复新密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10 btn-group" data-toggle="buttons">
+                                <label class="btn btn-default active">
+                                    <input type="radio" name="sex" id="male" value="0" autocomplete="off" checked>男
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="sex" id="female" value="1" autocomplete="off">女
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-label">年龄</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="age" id="age" placeholder="年龄">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-label">验证问题</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="validquestion" id="validquestion" placeholder="验证问题">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-label sr-only"></label>
+                            <div class="col-sm-10 checkbox">
+                                <label>
+                                    <input type="checkbox" name="agreement" value="1">我已阅读并同意<a href="#"> 网站服务条款</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary btn-lg">提交用户数据</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<footer class="container">
+    <hr>
+
+    <div class="copyright">
+        <span>Powered by <a href="#">SwiftQuiz</a>&nbsp;|&nbsp;</span><a href="/Home/index/about">关于</a><br>
+        <span>(C) DavidZYC2000</span>
+    </div>
+
+    <div class="links">
+        <a href="">链接1</a> |
+        <a href="">链接2</a>
+    </div>
+
+</footer>
+
+<script src="__PUBLIC__/js/jquery-2.1.4.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+</body>
+</html>

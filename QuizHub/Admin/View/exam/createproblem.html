@@ -1,0 +1,95 @@
+
+<script src="__PUBLIC__/ckeditor/ckeditor.js"></script>
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p class="lead">添加题目</p>
+        </div>
+
+        <form method="post" action="__URL__/insertproblem/eid/{$Think.get.eid}">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">题目</span>
+                            </div>
+                            <div class="col-md-11">
+                                <textarea name="pcontent" id="pcontent" rows="10" cols="10" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">阅卷</span>
+                            </div>
+                            <div class="col-md-11 btn-group" data-toggle="buttons">
+                                <label class="btn btn-default active">
+                                    <input type="radio" name="ansunique" id="enable" value="1" autocomplete="off" checked>自动
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="ansunique" id="disable" value="0" autocomplete="off">人工
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">答案</span>
+                            </div>
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" name="rightans">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="lead">分值</span>
+                            </div>
+                            <div class="col-md-11">
+                                <input type="number" class="form-control" name="score">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-1">
+                                <button type="submit" class="btn btn-primary btn-lg">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+
+
+
+
+</div>
+
+
+<script>
+    CKEDITOR.replace( 'pcontent', {
+        mathJaxLib: '//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+        height: 320,
+        filebrowserImageUploadUrl: '/Admin/exam/uploadimg'
+    } );
+
+</script>

@@ -1,0 +1,76 @@
+<script type="text/javascript"
+        src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<style>
+
+    #score {
+        font-size: 108px;
+        position: absolute;
+        top: 0px;
+        right: 80px;
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5>{$exam.title}</h5>
+                    <span>
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;{$exam.uname}&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-calendar"></span>&nbsp;{$exam.date}&nbsp;&nbsp;
+                    </span>
+                    <h1 id="score" class="text-success">{$exam.score}</h1>
+                </div>
+            </div>
+
+
+            <volist name="problemlist" id="problemlist" empty="$empty" >
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        题目编号:{$problemlist.pid}&nbsp;&nbsp;&nbsp;&nbsp;题目分值:{$problemlist.score}
+                    </div>
+                    <div class="panel-body">
+                        {$problemlist.pcontent}
+                    </div>
+                    <div class="panel-footer">
+
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <span class="">你的答案</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control problem" value="{$problemlist.anscontent}" readonly>
+                                </div>
+                                <div class="col-md-1">
+                                    <span class="">正确答案</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control problem" value="{$problemlist.rightans}" readonly>
+                                </div>
+                                <if condition="$problemlist['anscontent'] eq $problemlist['rightans']">
+                                    <h5 class="text-success">正确</h5>
+                                    <else />
+                                    <h5 class="text-danger">错误</h5>
+                                </if>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </volist>
+
+
+        </div>
+    </div>

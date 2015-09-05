@@ -1,0 +1,76 @@
+<script type="text/javascript"
+        src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5>{$exam.title}</h5>
+                    <span>
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;{$exam.uname}&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-calendar"></span>&nbsp;{$exam.date}&nbsp;&nbsp;
+                    </span>
+                        <a href="#" class="btn btn-danger" style="float: right;" data-toggle="modal" data-target="#delanswer">清除该用户此次考试的答题数据</a>
+                    </div>
+                </div>
+
+
+                <volist name="problemlist" id="problemlist" empty="$empty" >
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            题目编号:{$problemlist.pid}&nbsp;&nbsp;&nbsp;&nbsp;题目分值:{$problemlist.score}
+                        </div>
+                        <div class="panel-body">
+                            {$problemlist.pcontent}
+                        </div>
+                        <div class="panel-footer">
+
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <span class="">TA的答案</span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control problem" value="{$problemlist.anscontent}" readonly>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span class="">正确答案</span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control problem" value="{$problemlist.rightans}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </volist>
+
+
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="delanswer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">您确认要清除吗？</h4>
+                    </div>
+                    <div class="modal-body">
+                        即将清除该用户此次考试的数据，您确定要继续吗？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <a href="__URL__/delanswer/uid/{$Think.get.uid}/eid/{$Think.get.eid}" class="btn btn-danger">清除</a>
+                    </div>
+                </div>
+            </div>
+        </div>

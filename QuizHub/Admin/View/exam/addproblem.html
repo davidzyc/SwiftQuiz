@@ -1,0 +1,187 @@
+<script type="text/javascript"
+        src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script src="__PUBLIC__/js/chart.min.js"></script>
+<div class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="lead">编辑试题</span>
+        </div>
+        <div class="panel-body">
+            <a href="__URL__/createproblem/eid/{$Think.get.eid}" class="btn btn-primary btn-lg btn-block">添加试题</a>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="lead">试卷情况</span>
+        </div>
+        <div class="panel-body">
+
+            <div class="progress">
+                <a href="#" data-toggle="modal" data-target="#myModal">
+                    <div class="progress-bar progress-bar-success" style="width: {$finishedrate}%">
+                        （{$finished}/{$all}人） 已完成
+                    </div>
+                </a>
+
+                <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: {$doingrate}%">
+                    （{$doing}/{$all}人） 正在答题
+                </div>
+                <div class="progress-bar progress-bar-danger" style="width: {$haventdorate}%">
+                    （{$haventdo}/{$all}人） 未答题
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-lg-3">
+                    平均成绩：
+                            <span class="">
+                               {$average}
+                            </span>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <span class="text-danger">最高分：</span>
+                            <span class="text-danger">
+                                {$max}
+                            </span>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <span class="text-success">最低分：</span>
+                            <span class="text-success">
+                                {$min}
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <volist name="problemlist" id="problemlist" empty="$empty" >
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                题目编号:{$problemlist.pid}
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="">题目</span>
+                            </div>
+                            <div class="col-md-11">
+                                {$problemlist.pcontent}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="">阅卷</span>
+                            </div>
+                            <div class="col-md-5">
+
+                                {$problemlist.ansunique}
+                            </div>
+                            <div class="col-md-1">
+                                <span class="">分值</span>
+                            </div>
+                            <div class="col-md-5">
+
+                                {$problemlist.score}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="">答案</span>
+                            </div>
+                            <div class="col-md-11">
+                                {$problemlist.rightans}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="">统计</span>
+                            </div>
+                            <div class="col-md-11">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>答案</th>
+                                        <th>人数</th>
+                                    </tr>
+                                    <volist name="problemlist[answer]" id="answer">
+
+                                        <tr>
+                                            <td>{$answer.anscontent}</td>
+                                            <td>{$answer.num}</td>
+                                        </tr>
+
+                                    </volist>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="">操作</span>
+                            </div>
+                            <div class="col-md-11">
+                                <a href="__URL__/editproblem/pid/{$problemlist.pid}" class="btn btn-primary">编辑</a>
+                                <a href="__URL__/deleteproblem/pid/{$problemlist.pid}" class="btn btn-danger">删除</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+    </volist>
+
+
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">已完成的用户</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-responsive">
+                    <tr>
+                        <th>用户名</th>
+                        <th>得分</th>
+                    </tr>
+                    <volist id="userfinished" name="userfinished">
+                        <tr>
+                            <td><a href="__URL__/seeanswer/eid/{$userfinished.eid}/uid/{$userfinished.uid}" >{$userfinished.username}</a></td>
+                            <td>{$userfinished.score}</td>
+                        </tr>
+                    </volist>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

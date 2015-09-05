@@ -1,0 +1,83 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading panel-title">试卷详情</div>
+                <div class="panel-body">
+                    <h4>{$examdata.title}</h4>
+                    <hr>
+                    <h6>
+                        <span class="glyphicon glyphicon-user"></span><span>{$examdata.uname}</span>&nbsp;&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-calendar"></span><span>{$examdata.date}</span>&nbsp;&nbsp;&nbsp;
+                    </h6>
+
+                    <p>
+                        简介：{$examdata.summary}
+                    </p>
+
+                    <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#confirm">参加本场考试</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading panel-title">考试成绩</div>
+                <div class="panel-body">
+                    <div class="alert alert-success" role="alert">还没有参加考试或出成绩哦！</div>
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                            <span class="text-primary">我的成绩：</span>
+                            <span class="lead text-primary">
+                                {$score}
+                            </span>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            平均成绩：
+                            <span class="">
+                               {$average}
+                            </span>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <span class="text-danger">最高分：</span>
+                            <span class="text-danger">
+                                {$max}
+                            </span>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <span class="text-success">最低分：</span>
+                            <span class="text-success">
+                                {$min}
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <p><a href="__URL__/detail/eid/{$Think.get.eid}" class="btn btn-default">去查具体成绩</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="ModalLabel">您确认要开始此次考试吗？</h4>
+                </div>
+                <div class="modal-body">
+                    考试一旦开始就无法中途退出，直到考试结束您才可以离开考试页面！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">暂不参加</button>
+                    <a href="/Home/exam/exam/eid/{$examdata.eid}" class="btn btn-primary">立即参加</a>
+                </div>
+            </div>
+        </div>
+    </div>

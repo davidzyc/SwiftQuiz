@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title} - SwiftQuiz</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SwiftQuiz">
+    <link rel="apple-touch-icon" href="__PUBLIC__/images/logo_favicon.png">
+
+    <link rel="shortcut icon" href="__PUBLIC__/images/logo_ios_desktop.png" />
+
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/css/global.css" rel="stylesheet" type="text/css">
+    <script src="__PUBLIC__/js/jquery-2.1.4.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#res-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">SwiftQuiz</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="res-nav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/Home/index/index"><span class="glyphicon glyphicon-list-alt"></span>考试<span class="sr-only">(current)</span></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span>
+                        {$Think.session.username}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/Home/user/account"><span class="glyphicon glyphicon-cog"></span>设置</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Home/user/logout"><span class="text-danger"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</span> </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{__CONTENT__}
+
+<footer class="container">
+    <hr>
+
+    <div class="copyright">
+        <span>Powered by <a href="#">SwiftQuiz</a>&nbsp;|&nbsp;</span><a href="/Home/index/about">关于</a><br>
+        <span>(C) DavidZYC2000</span>
+    </div>
+
+    <div class="links">
+        <a href="">链接1</a> |
+        <a href="">链接2</a>
+    </div>
+
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+.footer {
+    margin: 20px;
+    padding-bottom: 50px;
+}
+
+.label {
+    margin: 5px;
+}
+
+.checkbox {
+    margin: 0;
+}
+
+.progress {
+    height: 25px; !important;
+}

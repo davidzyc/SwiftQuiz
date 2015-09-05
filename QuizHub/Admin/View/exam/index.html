@@ -1,0 +1,84 @@
+<style>
+    #title {
+        width: 40%;
+    }
+    #name {
+        width: 20%;
+    }
+    #time {
+        width: 20%;
+    }
+    #editinfo {
+        width: 10%;
+    }
+    #editprob {
+        width: 10%;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-inline" method="get" action="__URL__/index">
+                        <div class="form-group col-md-3 col-lg-3">
+                            <label class="sr-only" for="searchUser"></label>
+                            <div class="input-group" style="width: 100%;">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </div>
+                                <input type="text" class="form-control" id="searchUser" name="title" placeholder="搜索标题" value="{$Think.get.title}">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 col-lg-3">
+                            <label class="sr-only" for="searchUser"></label>
+                            <div class="input-group" style="width: 100%;">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </div>
+                                <input type="text" class="form-control" id="searchUser" name="uname" placeholder="搜索出卷老师" value="{$Think.get.uname}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                        <a href="__URL__/create" class="col-md-offset-4 btn btn-success"><span class="glyphicon glyphicon-plus"></span> 添加试卷</a>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <table class="table table-hover table-responsive">
+                        <tr>
+                            <th id="title">考试名称</th>
+                            <th id="name">出卷人</th>
+                            <th id="time">时间</th>
+                            <th id="editinfo">编辑信息</th>
+                            <th id="editprob">编辑试题</th>
+                        </tr>
+
+                        <volist name="list" id="examlist" empty="$empty" >
+                            <tr>
+                                <td><b><a href="__URL__/update/eid/{$examlist.eid}">{$examlist.title}</a></b></td>
+                                <td>{$examlist.uname}</td>
+                                <td>{$examlist.date}</td>
+                                <td><a href="__URL__/update/eid/{$examlist.eid}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> </a></td>
+                                <td><a href="__URL__/addproblem/eid/{$examlist.eid}" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> </a></td>
+                            </tr>
+                        </volist>
+                    </table>
+
+                </div>
+                <div class="panel-footer">
+                    <nav>
+                        <ul class="pagination">
+                            {$page}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

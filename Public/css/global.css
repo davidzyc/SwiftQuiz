@@ -1,0 +1,22 @@
+body {
+    padding-top: 100px;
+    font-size: 14px;
+}
+.navbar-nav li {
+    font-size: 16px;
+}
+.copyright {
+    float: left;
+}
+.links {
+    float: right;
+}
+.navbar-text {
+    font-size: 16px;
+}
+.glyphicon {
+    margin-right: 5px; !important;
+}
+.lead {
+    font-weight: 400; !important;
+}
